@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.MenuItem
 import br.com.caelum.twittelumappweb.R
+import br.com.caelum.twittelumappweb.fragment.BuscadorDeTweetsFragment
 import br.com.caelum.twittelumappweb.fragment.ListaTweetsFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menuPesquisar -> {
-                    exibe(Fragment())
+                    exibe(BuscadorDeTweetsFragment())
                     true
                 }
                 R.id.menuMapa -> {
