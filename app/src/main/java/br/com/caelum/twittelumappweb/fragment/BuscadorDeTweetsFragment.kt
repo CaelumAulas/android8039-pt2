@@ -26,10 +26,8 @@ class BuscadorDeTweetsFragment : Fragment() {
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        val view = inflater.inflate(R.layout.lista_tweets_fragment, container, false)
 
-
-        return view
+        return inflater.inflate(R.layout.lista_tweets_fragment, container, false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
