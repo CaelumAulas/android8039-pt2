@@ -10,4 +10,10 @@ class UsuarioViewModel(private val repository: UsuarioRepository) : ViewModel() 
 
     fun loga(usuario: Usuario) = repository.login(usuario)
 
+    fun usuarioLogado() = repository.usuarioLogado
+
+    fun usuarioDaSessao() = repository.usuarioDaSessao
+
+    fun falha() = repository.erro
+
 }

@@ -1,8 +1,11 @@
 package br.com.caelum.twittelumappweb.activity
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.modelo.Usuario
 import br.com.caelum.twittelumappweb.viewmodel.UsuarioViewModel
@@ -19,6 +22,19 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        viewModel.usuarioLogado().observe(this, Observer { estaLogado ->
+
+            estaLogado?.let {
+                if (estaLogado) {
+                    vaiParaMain()
+                }
+            }
+        })
+
+        viewModel.falha().observe(this, Observer {
+            Toast.makeText(this, it!!.message, Toast.LENGTH_LONG).show()
+        })
+
 
         login_criar.setOnClickListener {
             viewModel.criaConta(usuarioDaTela())
@@ -29,6 +45,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun vaiParaMain() {
+
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun usuarioDaTela(): Usuario {
