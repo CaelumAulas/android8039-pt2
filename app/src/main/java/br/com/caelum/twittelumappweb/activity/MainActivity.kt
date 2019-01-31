@@ -1,5 +1,6 @@
 package br.com.caelum.twittelumappweb.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -38,6 +39,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainBottomNavigation.selectedItemId = R.id.menuLista
+
+
+
+        mainFab.setOnClickListener {
+
+            val intent = Intent(this, TweetActivity::class.java)
+            startActivity(intent)
+
+        }
+
 
 
     }

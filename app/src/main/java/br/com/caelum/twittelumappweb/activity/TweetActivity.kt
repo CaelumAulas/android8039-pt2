@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.content.FileProvider
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
@@ -19,6 +20,7 @@ import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.decodificaParaBase64
 import br.com.caelum.twittelumappweb.modelo.Tweet
 import br.com.caelum.twittelumappweb.viewmodel.TweetViewModel
+import br.com.caelum.twittelumappweb.viewmodel.UsuarioViewModel
 import br.com.caelum.twittelumappweb.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.activity_tweet.*
 import java.io.File
@@ -27,6 +29,9 @@ import java.io.File
 class TweetActivity : AppCompatActivity() {
 
     private lateinit var viewModel: TweetViewModel
+    private val usuarioViewModel: UsuarioViewModel by lazy {
+        ViewModelProviders.of(this, ViewModelFactory).get(UsuarioViewModel::class.java)
+    }
     private var localFoto: String? = null
 
 
@@ -93,6 +98,7 @@ class TweetActivity : AppCompatActivity() {
 
         viewModel.salva(tweet)
 
+        Log.d("tweetSalvo", "$tweet")
         Toast.makeText(this, "$tweet foi salvo com sucesso :D", Toast.LENGTH_LONG).show()
     }
 
@@ -104,7 +110,9 @@ class TweetActivity : AppCompatActivity() {
 
         val foto: String? = tweet_foto.tag as String?
 
-        return Tweet(mensagemDoTweet, foto)
+        val dono = usuarioViewModel.usuarioDaSessao().value
+
+        return Tweet(mensagemDoTweet, foto, dono!!)
     }
 
 
