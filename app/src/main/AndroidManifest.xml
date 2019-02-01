@@ -20,6 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity
             android:name=".activity.LoginActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
@@ -53,9 +58,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".LIXO"
-            android:label="@string/title_activity_lixo"></activity>
     </application>
 
 </manifest>
