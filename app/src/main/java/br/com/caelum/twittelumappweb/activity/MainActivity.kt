@@ -8,6 +8,7 @@ import android.view.MenuItem
 import br.com.caelum.twittelumappweb.R
 import br.com.caelum.twittelumappweb.fragment.BuscadorDeTweetsFragment
 import br.com.caelum.twittelumappweb.fragment.ListaTweetsFragment
+import br.com.caelum.twittelumappweb.fragment.MeuMapaFragment
 import com.google.android.gms.maps.SupportMapFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menuMapa -> {
-                    exibe(SupportMapFragment())
+                    exibe(MeuMapaFragment())
                     true
                 }
                 else -> {
